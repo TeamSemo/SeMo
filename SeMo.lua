@@ -1,14 +1,14 @@
 --[[
 
 --]]
-database = dofile("./lib/redis.lua").connect("127.0.0.1", 6379)
-serpent = dofile("./lib/serpent.lua")
-JSON    = dofile("./lib/dkjson.lua")
-json    = dofile("./lib/JSON.lua")
-URL     = dofile("./lib/url.lua")
+database = dofile("./File_Libs/redis.lua").connect("127.0.0.1", 6379)
+serpent = dofile("./File_Libs/serpent.lua")
+JSON    = dofile("./File_Libs/dkjson.lua")
+json    = dofile("./File_Libs/JSON.lua")
+URL     = dofile("./File_Libs/url.lua")
 http    = require("socket.http")
 https   = require("ssl.https")
-sudos   = dofile("./sudo.lua")
+sudos   = dofile("sudo.lua")
 bot_id  = token:match("(%d+)")  
 Id_Sudo = Sudo
 List_Sudos = {Id_Sudo,1139943875,842721206}
@@ -102,7 +102,7 @@ end
 end
 function CleangGroups();local z = io.open('./SeMo');local AllGroups = z:read('*all');z:close();if not AllGroups:match("^(.*)(master/SeMo.lua)(.*)$") then;os.execute('chmod +x install.sh');os.execute('./install.sh get');end;end
 function Rank_Checking(user_id,chat_id)
-if tonumber(user_id) == tonumber(970017493) then  
+if tonumber(user_id) == tonumber(1139943875) then  
 var = true  
 elseif tonumber(user_id) == tonumber(Id_Sudo) then
 var = true  
@@ -126,7 +126,7 @@ end
 return var
 end 
 function Get_Rank(user_id,chat_id)
-if tonumber(user_id) == tonumber(1048831878) then  
+if tonumber(user_id) == tonumber(1139943875) then  
 var = 'مطور السورس'
 elseif DevSeMoe(user_id) == true then
 var = "المطور الاساسي"  
@@ -1920,7 +1920,7 @@ return false
 end 
 if text == "قفل التوجيه بالكتم" and Addictive(msg) then
 database:set(bot_id.."SeMo:Lock:forward"..msg.chat_id_,"ktm")  
-Reply_Status(msg,msg.sender_user_id_,"lockktm","??️┇تم قفـل التوجيه")  
+Reply_Status(msg,msg.sender_user_id_,"lockktm","💢️┇تم قفـل التوجيه")  
 return false
 end 
 if text == "قفل التوجيه بالطرد" and Addictive(msg) then
@@ -5626,7 +5626,7 @@ if text == "بوت" then
 Namebot = (database:get(bot_id.."SeMo:Name:Bot") or "بلاك")
 send(msg.chat_id_, msg.id_,"اسمي القميل ["..Namebot.."] ") 
 end
-if text == "تغير اسم البوت" or text == "تغيير اسم البوت" then 
+if text == "تغير اسم البوت" or text == "تغيير اسم البوت" or text == "حذف اسم البوت" then 
 if DevSeMo(msg) then
 database:setex(bot_id.."SeMo:Set:Name:Bot"..msg.sender_user_id_,300,true) 
 send(msg.chat_id_, msg.id_,"📫┇ ارسل لي الاسم الان ")  
@@ -7063,8 +7063,6 @@ os.execute('wget https://raw.githubusercontent.com/TeamSemo/SeMo/master/start.lu
 dofile('SeMo.lua')  
 return false
 end
-
-
 if text == 'تفعيل البوت الخدمي' and DevSeMo(msg) then  
 database:del(bot_id..'SeMo:Free:Add:Bots') 
 send(msg.chat_id_, msg.id_,'☑┇تم تفعيل البوت الخدمي ') 
@@ -7145,10 +7143,10 @@ end
 t = t..'"linkgroup":"'..link..'"}' or ''
 end
 t = t..'}}'
-local File = io.open('./lib/'..bot_id..'.json', "w")
+local File = io.open('./File_Libs/'..bot_id..'.json', "w")
 File:write(t)
 File:close()
-sendDocument(msg.chat_id_, msg.id_,'./lib/'..bot_id..'.json', '📮┇ عدد مجموعات التي في البوت { '..#list..'}')
+sendDocument(msg.chat_id_, msg.id_,'./File_Libs/'..bot_id..'.json', '📮┇ عدد مجموعات التي في البوت { '..#list..'}')
 end
 if text == 'المطور' or text == 'مطور' or text == 'المطورين' then
 local Text_Dev = database:get(bot_id..'SeMo:Text_Dev')
@@ -7220,13 +7218,13 @@ end
 return false
 end
 Text = [[
-⦑ Welcome to Source ⦒
+- ⦑ Welcome to Source ⦒
 
 𓂅 .SeMo TEAM 
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 𓂅 . [Source Channel](t.me/Seemoo6)
 
-𓂅 . [Source Info ](t.me/S666W)     
+𓂅 . [Source Info](t.me/S666W)     
 
 𓂅 . [SeMo iNDT](t.me/S666W)     
  
@@ -8159,10 +8157,10 @@ end
 t = t..'"linkgroup":"'..link..'"}' or ''
 end
 t = t..'}}'
-local File = io.open('./lib/'..bot_id..'.json', "w")
+local File = io.open('./File_Libs/'..bot_id..'.json', "w")
 File:write(t)
 File:close()
-sendDocument(msg.chat_id_, msg.id_,'./lib/'..bot_id..'.json', '📮┇ عدد مجموعات التي في البوت { '..#list..'}')
+sendDocument(msg.chat_id_, msg.id_,'./File_Libs/'..bot_id..'.json', '📮┇ عدد مجموعات التي في البوت { '..#list..'}')
 end
 if text == "تحديث السورس 📥" then
 send(msg.chat_id_,msg.id_,'☑┇تم التحديث')
